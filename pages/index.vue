@@ -19,7 +19,7 @@
           <v-btn
             color="secondary"
             nuxt
-            to="/inspire"
+            to="/report"
           >
             Show Report
           </v-btn>
