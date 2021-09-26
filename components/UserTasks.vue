@@ -37,9 +37,9 @@
 import {Component, Vue} from 'nuxt-property-decorator'
 import {getters, RootState} from '~/store/users'
 import ChartBar from "~/components/ChartBar.vue";
-
+import {ChartData} from "~/types/chartData";
 import {Task} from "~/types/task";
-import {User} from "~/types/User";
+
 
 @Component({
   components: {ChartBar}
@@ -67,7 +67,7 @@ export default class UserTasks extends Vue {
 
 
   protected chartData() {
-    let datacollection: object = {
+    let datacollection: ChartData = {
       labels: [],
       datasets: [
         {
@@ -89,7 +89,8 @@ export default class UserTasks extends Vue {
     if (this.users)
       users = this.users.users
 
-    Array.prototype.forEach.call(users, user => {
+    Array.prototype.forEach.call(users, userObject => {
+      const user:User = userObject
 
       let userTasks: [] = []
       if (user.id) {
@@ -105,7 +106,9 @@ export default class UserTasks extends Vue {
 
         let completedTasks: bigint = 0
         let unCompletedTasks: bigint = 0
-        Array.prototype.forEach.call(userTasks, task => {
+        Array.prototype.forEach.call(userTasks, taskObject => {
+          const task:Task = taskObject
+
           if (task.completed)
             completedTasks++
           else
@@ -122,8 +125,8 @@ export default class UserTasks extends Vue {
     return datacollection
   }
 
-  public pluck(array, key) {
-    return array.map(function (obj) {
+  public pluck(array:[], key:bigint) {
+    return array.map(function (obj:object) {
       return obj[key];
     });
   }
