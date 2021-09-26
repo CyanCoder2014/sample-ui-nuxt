@@ -3,7 +3,7 @@
 
   <div>
 
-    <bar-chart v-if="data" :chart-data="data" :options="options"></bar-chart>
+    <bar-chart v-if="data" :chart-data="data" :options="options" :width="300" :height="500"></bar-chart>
 
   </div>
 
@@ -39,6 +39,7 @@ export default {
         },
       },
       responsive: true,
+      maintainAspectRatio:false,
       scales: {
         xAxes: [{
           stacked: true,
