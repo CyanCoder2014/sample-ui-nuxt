@@ -72,12 +72,12 @@ export default class UserTasks extends Vue {
       datasets: [
         {
           label: 'Completed',
-          backgroundColor: '#f43a04',
+          backgroundColor: '#00c853',
           data: []
         },
         {
           label: 'UnCompleted',
-          backgroundColor: '#00c853',
+          backgroundColor: '#f43a04',
           data: []
         }
       ]
